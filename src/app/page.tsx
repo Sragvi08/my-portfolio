@@ -1,11 +1,13 @@
 import Link from "next/link";
+import { getAllNotes } from "@/lib/notes";
 
 export default function Home() {
+  const recentNotes = getAllNotes().slice(0, 4);
+
   return (
     <main>
       {/* Hero */}
       <section className="px-7 pt-16 pb-12 relative">
-        {/* Terminal lines — decorative, top right */}
         <div className="absolute right-7 top-16 text-right font-mono text-[11px] text-accent opacity-30 leading-loose hidden md:block">
           <p>$ whoami</p>
           <p>cybersec student</p>
@@ -13,27 +15,23 @@ export default function Home() {
           <p>always learning</p>
         </div>
 
-        {/* Tag */}
         <div className="inline-flex items-center gap-2 font-mono text-[11px] text-accent bg-accent/10 border border-accent/20 px-3 py-1 rounded mb-6 tracking-widest">
           ms cybersecurity
         </div>
 
-        {/* Headline */}
         <h1 className="font-sans text-4xl font-bold text-[#fafafa] leading-tight tracking-tight mb-4">
           Learning in public.
           <br />
           <span className="text-accent">Breaking things</span> on purpose.
         </h1>
 
-        {/* Subheading */}
         <p className="font-sans text-[15px] text-muted leading-relaxed max-w-lg mb-8">
           This is my public learning journal — not a polished portfolio, but an{" "}
-          <span className="text-[#a1a1aa]">honest record</span> of what I'm
+          <span className="text-[#a1a1aa]">honest record</span> of what I&apos;m
           figuring out. TryHackMe writeups, malware notes, and things I found
           interesting this week.
         </p>
 
-        {/* CTA buttons */}
         <div className="flex gap-3 items-center">
           <Link
             href="/notes"
@@ -50,14 +48,11 @@ export default function Home() {
         </div>
       </section>
 
-      {/* Divider */}
       <hr className="border-[#1f1f23] mx-7" />
 
       {/* Currently exploring */}
       <section className="px-7 py-9">
-        <p className="font-mono text-[10px] text-[#3f3f46] tracking-widest uppercase mb-5">
-          // currently exploring
-        </p>
+        <p className="font-mono text-[10px] text-[#3f3f46] tracking-widest uppercase mb-5"></p>
         <div className="grid grid-cols-1 sm:grid-cols-3 gap-3">
           {[
             {
@@ -92,40 +87,17 @@ export default function Home() {
         </div>
       </section>
 
-      {/* Divider */}
       <hr className="border-[#1f1f23] mx-7" />
 
-      {/* Recent notes */}
+      {/* Recent notes — now pulls from real markdown files */}
       <section className="px-7 py-9">
-        <p className="font-mono text-[10px] text-[#3f3f46] tracking-widest uppercase mb-5">
-          // recent notes
-        </p>
+        <p className="font-mono text-[10px] text-[#3f3f46] tracking-widest uppercase mb-5"></p>
         <div className="flex flex-col">
-          {[
-            {
-              type: "thm",
-              title: "Blue room — EternalBlue walkthrough & notes",
-              date: "may 12",
-            },
-            {
-              type: "note",
-              title: "How I think about static vs dynamic malware analysis",
-              date: "may 8",
-            },
-            {
-              type: "htb",
-              title: "Lame — first HTB box, what I got wrong",
-              date: "may 3",
-            },
-            {
-              type: "book",
-              title: "PMA ch. 1–3 — things that actually clicked",
-              date: "apr 29",
-            },
-          ].map((note) => (
-            <div
-              key={note.title}
-              className="flex items-center justify-between py-3 border-b border-[#111113] hover:opacity-80 transition-opacity cursor-pointer"
+          {recentNotes.map((note) => (
+            <Link
+              key={note.slug}
+              href={`/notes/${note.slug}`}
+              className="flex items-center justify-between py-3 border-b border-[#111113] hover:opacity-80 transition-opacity"
             >
               <div className="flex items-center gap-3">
                 <NoteTag type={note.type} />
@@ -134,17 +106,26 @@ export default function Home() {
                 </span>
               </div>
               <span className="font-mono text-[10px] text-[#3f3f46] shrink-0 ml-4">
-                {note.date}
+                {formatDate(note.date)}
               </span>
-            </div>
+            </Link>
           ))}
+        </div>
+
+        {/* Link to all notes */}
+        <div className="mt-6">
+          <Link
+            href="/notes"
+            className="font-mono text-[11px] text-muted hover:text-accent transition-colors"
+          >
+            all notes →
+          </Link>
         </div>
       </section>
     </main>
   );
 }
 
-// Tag badge component — inline for now, we'll extract it later
 function NoteTag({ type }: { type: string }) {
   const styles: Record<string, string> = {
     thm: "bg-green-500/10 text-green-400 border-green-500/20",
@@ -152,13 +133,23 @@ function NoteTag({ type }: { type: string }) {
     note: "bg-purple-500/10 text-purple-400 border-purple-500/20",
     book: "bg-yellow-500/10 text-yellow-400 border-yellow-500/20",
     otw: "bg-blue-500/10 text-blue-400 border-blue-500/20",
+    malware: "bg-orange-500/10 text-orange-400 border-orange-500/20",
   };
 
   return (
     <span
-      className={`font-mono text-[9px] px-1.5 py-0.5 rounded border tracking-widest uppercase ${styles[type] ?? styles.note}`}
+      className={`font-mono text-[9px] px-1.5 py-0.5 rounded border tracking-widest uppercase ${
+        styles[type] ?? styles.note
+      }`}
     >
       {type}
     </span>
   );
+}
+
+function formatDate(dateStr: string): string {
+  return new Date(dateStr).toLocaleDateString("en-US", {
+    month: "short",
+    day: "numeric",
+  });
 }
