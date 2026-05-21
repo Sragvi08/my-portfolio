@@ -5,81 +5,202 @@ export default function Home() {
   const recentNotes = getAllNotes().slice(0, 4);
 
   return (
-    <main>
+    <main style={{ padding: "0 2rem" }}>
       {/* Hero */}
-      <section className="px-7 pt-16 pb-12 relative">
-        <div className="absolute right-7 top-16 text-right font-mono text-[11px] text-accent opacity-30 leading-loose hidden md:block">
+      <section
+        style={{
+          paddingTop: "4rem",
+          paddingBottom: "3rem",
+          position: "relative",
+        }}
+      >
+        {/* Terminal decoration */}
+        <div
+          style={{
+            position: "absolute",
+            right: 0,
+            top: "4rem",
+            textAlign: "right",
+            fontFamily: "var(--font-mono-var), monospace",
+            fontSize: "11px",
+            color: "#22d3ee",
+            opacity: 0.25,
+            lineHeight: 2,
+            display: "none",
+          }}
+          className="md-terminal"
+        >
           <p>$ whoami</p>
           <p>cybersec student</p>
           <p>$ status</p>
           <p>always learning</p>
         </div>
 
-        <div className="inline-flex items-center gap-2 font-mono text-[11px] text-accent bg-accent/10 border border-accent/20 px-3 py-1 rounded mb-6 tracking-widest">
+        {/* Tag */}
+        <div
+          style={{
+            display: "inline-flex",
+            alignItems: "center",
+            fontFamily: "var(--font-mono-var), monospace",
+            fontSize: "11px",
+            color: "#22d3ee",
+            background: "rgba(34,211,238,0.08)",
+            border: "0.5px solid rgba(34,211,238,0.2)",
+            padding: "4px 12px",
+            borderRadius: "4px",
+            marginBottom: "1.5rem",
+            letterSpacing: "0.05em",
+          }}
+        >
           ms cybersecurity
         </div>
 
-        <h1 className="font-sans text-4xl font-bold text-[#fafafa] leading-tight tracking-tight mb-4">
+        {/* Headline */}
+        <h1
+          style={{
+            fontFamily: "var(--font-syne), sans-serif",
+            fontSize: "clamp(2rem, 5vw, 3rem)",
+            fontWeight: 700,
+            color: "#fafafa",
+            lineHeight: 1.15,
+            letterSpacing: "-0.02em",
+            marginBottom: "1rem",
+          }}
+        >
           Learning in public.
           <br />
-          <span className="text-accent">Breaking things</span> on purpose.
+          <span style={{ color: "#22d3ee" }}>Breaking things</span> on purpose.
         </h1>
 
-        <p className="font-sans text-[15px] text-muted leading-relaxed max-w-lg mb-8">
+        {/* Subheading */}
+        <p
+          style={{
+            fontFamily: "var(--font-syne), sans-serif",
+            fontSize: "15px",
+            color: "#71717a",
+            lineHeight: 1.8,
+            maxWidth: "480px",
+            marginBottom: "2rem",
+          }}
+        >
           This is my public learning journal — not a polished portfolio, but an{" "}
-          <span className="text-[#a1a1aa]">honest record</span> of what I&apos;m
-          figuring out. TryHackMe writeups, malware notes, and things I found
-          interesting this week.
+          <span style={{ color: "#a1a1aa" }}>honest record</span> of what
+          I&apos;m figuring out. TryHackMe writeups, malware notes, and things I
+          found interesting this week.
         </p>
 
-        <div className="flex gap-3 items-center">
+        {/* CTA buttons */}
+        <div style={{ display: "flex", gap: "12px", alignItems: "center" }}>
           <Link
             href="/notes"
-            className="font-mono text-xs px-5 py-2.5 bg-accent text-[#0a0a0b] rounded font-medium tracking-wider hover:bg-accent/90 transition-colors"
+            style={{
+              fontFamily: "var(--font-mono-var), monospace",
+              fontSize: "12px",
+              padding: "10px 20px",
+              background: "#22d3ee",
+              color: "#0a0a0b",
+              borderRadius: "4px",
+              fontWeight: 500,
+              letterSpacing: "0.04em",
+              textDecoration: "none",
+            }}
           >
             read my notes →
           </Link>
           <Link
             href="/projects"
-            className="font-mono text-xs px-5 py-2.5 bg-transparent text-muted border border-[#27272a] rounded tracking-wider hover:text-[#e4e4e7] hover:border-[#3f3f46] transition-colors"
+            style={{
+              fontFamily: "var(--font-mono-var), monospace",
+              fontSize: "12px",
+              padding: "10px 20px",
+              background: "transparent",
+              color: "#71717a",
+              border: "0.5px solid #27272a",
+              borderRadius: "4px",
+              letterSpacing: "0.04em",
+              textDecoration: "none",
+            }}
           >
             see projects
           </Link>
         </div>
       </section>
 
-      <hr className="border-[#1f1f23] mx-7" />
+      <hr style={{ border: "none", borderTop: "0.5px solid #1f1f23" }} />
 
       {/* Currently exploring */}
-      <section className="px-7 py-9">
-        <p className="font-mono text-[10px] text-[#3f3f46] tracking-widest uppercase mb-5"></p>
-        <div className="grid grid-cols-1 sm:grid-cols-3 gap-3">
+      <section style={{ padding: "2.5rem 0" }}>
+        <p
+          style={{
+            fontFamily: "var(--font-mono-var), monospace",
+            fontSize: "10px",
+            color: "#3f3f46",
+            letterSpacing: "0.1em",
+            textTransform: "uppercase",
+            marginBottom: "1.25rem",
+          }}
+        ></p>
+        <div
+          style={{
+            display: "grid",
+            gridTemplateColumns: "repeat(auto-fit, minmax(200px, 1fr))",
+            gap: "12px",
+          }}
+        >
           {[
             {
-              icon: "🚩",
+              icon: "⚑",
               title: "TryHackMe / HTB",
               desc: "room writeups & walkthroughs",
             },
             {
-              icon: "🐛",
+              icon: "◈",
               title: "Malware Analysis",
               desc: "PMA notes & samples",
             },
             {
-              icon: "📖",
+              icon: "◎",
               title: "Reading Log",
               desc: "books, papers, podcasts",
             },
           ].map((card) => (
             <div
               key={card.title}
-              className="bg-card border border-[#1f1f23] rounded-lg p-4 hover:border-[#3f3f46] transition-colors"
+              style={{
+                background: "#111113",
+                border: "0.5px solid #1f1f23",
+                borderRadius: "8px",
+                padding: "1rem",
+              }}
             >
-              <div className="text-base mb-2">{card.icon}</div>
-              <div className="font-sans text-sm font-medium text-[#e4e4e7] mb-1">
+              <div
+                style={{
+                  fontFamily: "var(--font-mono-var), monospace",
+                  fontSize: "16px",
+                  color: "#22d3ee",
+                  marginBottom: "8px",
+                }}
+              >
+                {card.icon}
+              </div>
+              <div
+                style={{
+                  fontFamily: "var(--font-syne), sans-serif",
+                  fontSize: "13px",
+                  fontWeight: 500,
+                  color: "#e4e4e7",
+                  marginBottom: "4px",
+                }}
+              >
                 {card.title}
               </div>
-              <div className="font-mono text-xs text-[#52525b]">
+              <div
+                style={{
+                  fontFamily: "var(--font-mono-var), monospace",
+                  fontSize: "12px",
+                  color: "#52525b",
+                }}
+              >
                 {card.desc}
               </div>
             </div>
@@ -87,36 +208,83 @@ export default function Home() {
         </div>
       </section>
 
-      <hr className="border-[#1f1f23] mx-7" />
+      <hr style={{ border: "none", borderTop: "0.5px solid #1f1f23" }} />
 
-      {/* Recent notes — now pulls from real markdown files */}
-      <section className="px-7 py-9">
-        <p className="font-mono text-[10px] text-[#3f3f46] tracking-widest uppercase mb-5"></p>
-        <div className="flex flex-col">
-          {recentNotes.map((note) => (
-            <Link
-              key={note.slug}
-              href={`/notes/${note.slug}`}
-              className="flex items-center justify-between py-3 border-b border-[#111113] hover:opacity-80 transition-opacity"
+      {/* Recent notes */}
+      <section style={{ padding: "2.5rem 0" }}>
+        <p
+          style={{
+            fontFamily: "var(--font-mono-var), monospace",
+            fontSize: "10px",
+            color: "#3f3f46",
+            letterSpacing: "0.1em",
+            textTransform: "uppercase",
+            marginBottom: "1.25rem",
+          }}
+        ></p>
+        <div style={{ display: "flex", flexDirection: "column" }}>
+          {recentNotes.length === 0 ? (
+            <p
+              style={{
+                fontFamily: "var(--font-mono-var), monospace",
+                fontSize: "12px",
+                color: "#3f3f46",
+              }}
             >
-              <div className="flex items-center gap-3">
-                <NoteTag type={note.type} />
-                <span className="font-sans text-sm text-[#a1a1aa]">
-                  {note.title}
+              no notes yet — drop a .md file in content/notes/
+            </p>
+          ) : (
+            recentNotes.map((note) => (
+              <Link
+                key={note.slug}
+                href={`/notes/${note.slug}`}
+                style={{
+                  display: "flex",
+                  alignItems: "center",
+                  justifyContent: "space-between",
+                  padding: "12px 0",
+                  borderBottom: "0.5px solid #111113",
+                  textDecoration: "none",
+                }}
+              >
+                <div
+                  style={{ display: "flex", alignItems: "center", gap: "12px" }}
+                >
+                  <NoteTag type={note.type} />
+                  <span
+                    style={{
+                      fontFamily: "var(--font-syne), sans-serif",
+                      fontSize: "13px",
+                      color: "#a1a1aa",
+                    }}
+                  >
+                    {note.title}
+                  </span>
+                </div>
+                <span
+                  style={{
+                    fontFamily: "var(--font-mono-var), monospace",
+                    fontSize: "10px",
+                    color: "#3f3f46",
+                    flexShrink: 0,
+                    marginLeft: "1rem",
+                  }}
+                >
+                  {formatDate(note.date)}
                 </span>
-              </div>
-              <span className="font-mono text-[10px] text-[#3f3f46] shrink-0 ml-4">
-                {formatDate(note.date)}
-              </span>
-            </Link>
-          ))}
+              </Link>
+            ))
+          )}
         </div>
-
-        {/* Link to all notes */}
-        <div className="mt-6">
+        <div style={{ marginTop: "1.5rem" }}>
           <Link
             href="/notes"
-            className="font-mono text-[11px] text-muted hover:text-accent transition-colors"
+            style={{
+              fontFamily: "var(--font-mono-var), monospace",
+              fontSize: "11px",
+              color: "#71717a",
+              textDecoration: "none",
+            }}
           >
             all notes →
           </Link>
@@ -127,20 +295,55 @@ export default function Home() {
 }
 
 function NoteTag({ type }: { type: string }) {
-  const styles: Record<string, string> = {
-    thm: "bg-green-500/10 text-green-400 border-green-500/20",
-    htb: "bg-red-500/10 text-red-400 border-red-500/20",
-    note: "bg-purple-500/10 text-purple-400 border-purple-500/20",
-    book: "bg-yellow-500/10 text-yellow-400 border-yellow-500/20",
-    otw: "bg-blue-500/10 text-blue-400 border-blue-500/20",
-    malware: "bg-orange-500/10 text-orange-400 border-orange-500/20",
-  };
+  const styles: Record<string, { bg: string; color: string; border: string }> =
+    {
+      thm: {
+        bg: "rgba(34,197,94,0.1)",
+        color: "#22c55e",
+        border: "rgba(34,197,94,0.2)",
+      },
+      htb: {
+        bg: "rgba(239,68,68,0.1)",
+        color: "#ef4444",
+        border: "rgba(239,68,68,0.2)",
+      },
+      note: {
+        bg: "rgba(168,85,247,0.1)",
+        color: "#a855f7",
+        border: "rgba(168,85,247,0.2)",
+      },
+      book: {
+        bg: "rgba(251,191,36,0.1)",
+        color: "#fbbf24",
+        border: "rgba(251,191,36,0.2)",
+      },
+      otw: {
+        bg: "rgba(59,130,246,0.1)",
+        color: "#3b82f6",
+        border: "rgba(59,130,246,0.2)",
+      },
+      malware: {
+        bg: "rgba(249,115,22,0.1)",
+        color: "#f97316",
+        border: "rgba(249,115,22,0.2)",
+      },
+    };
+
+  const s = styles[type] ?? styles.note;
 
   return (
     <span
-      className={`font-mono text-[9px] px-1.5 py-0.5 rounded border tracking-widest uppercase ${
-        styles[type] ?? styles.note
-      }`}
+      style={{
+        fontFamily: "var(--font-mono-var), monospace",
+        fontSize: "9px",
+        padding: "2px 6px",
+        borderRadius: "3px",
+        letterSpacing: "0.06em",
+        textTransform: "uppercase",
+        background: s.bg,
+        color: s.color,
+        border: `0.5px solid ${s.border}`,
+      }}
     >
       {type}
     </span>
