@@ -3,10 +3,8 @@ import Link from "next/link";
 export default function Home() {
   return (
     <main>
-
       {/* Hero */}
       <section className="px-7 pt-16 pb-12 relative">
-
         {/* Terminal lines — decorative, top right */}
         <div className="absolute right-7 top-16 text-right font-mono text-[11px] text-accent opacity-30 leading-loose hidden md:block">
           <p>$ whoami</p>
@@ -17,12 +15,13 @@ export default function Home() {
 
         {/* Tag */}
         <div className="inline-flex items-center gap-2 font-mono text-[11px] text-accent bg-accent/10 border border-accent/20 px-3 py-1 rounded mb-6 tracking-widest">
-          ms cybersecurity · class of 2026
+          ms cybersecurity
         </div>
 
         {/* Headline */}
         <h1 className="font-sans text-4xl font-bold text-[#fafafa] leading-tight tracking-tight mb-4">
-          Learning in public.<br />
+          Learning in public.
+          <br />
           <span className="text-accent">Breaking things</span> on purpose.
         </h1>
 
@@ -49,7 +48,6 @@ export default function Home() {
             see projects
           </Link>
         </div>
-
       </section>
 
       {/* Divider */}
@@ -142,7 +140,6 @@ export default function Home() {
           ))}
         </div>
       </section>
-
     </main>
   );
 }
