@@ -5,13 +5,36 @@ export default function NotesPage() {
   const notes = getAllNotes();
 
   return (
-    <main className="px-7 py-12 max-w-3xl mx-auto">
-      <div className="mb-10">
-        <div className="font-mono text-[11px] text-accent tracking-widest mb-3"></div>
-        <h1 className="font-sans text-3xl font-bold text-[#fafafa] mb-3">
+    <main style={{ padding: "3rem 2rem", maxWidth: "720px", margin: "0 auto" }}>
+      <div style={{ marginBottom: "3rem" }}>
+        <div
+          style={{
+            fontFamily: "var(--font-mono-var), monospace",
+            fontSize: "11px",
+            color: "#22d3ee",
+            letterSpacing: "0.1em",
+            marginBottom: "1rem",
+          }}
+        ></div>
+        <h1
+          style={{
+            fontFamily: "var(--font-syne), sans-serif",
+            fontSize: "2rem",
+            fontWeight: 700,
+            color: "#fafafa",
+            marginBottom: "0.75rem",
+          }}
+        >
           My Learning Journal
         </h1>
-        <p className="font-sans text-sm text-muted leading-relaxed max-w-lg">
+        <p
+          style={{
+            fontFamily: "var(--font-syne), sans-serif",
+            fontSize: "14px",
+            color: "#71717a",
+            lineHeight: 1.7,
+          }}
+        >
           Raw notes, writeups, and reflections. Written for my future self
           first, anyone else second.
         </p>

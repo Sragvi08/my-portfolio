@@ -84,9 +84,8 @@ export default function Home() {
           }}
         >
           This is my public learning journal — not a polished portfolio, but an{" "}
-          <span style={{ color: "#a1a1aa" }}>honest record</span> of what
-          I&apos;m figuring out. TryHackMe writeups, malware notes, and things I
-          found interesting this week.
+          honest record of what I&apos;m figuring out. TryHackMe writeups,
+          malware notes, and things I found interesting this week.
         </p>
 
         {/* CTA buttons */}
@@ -129,7 +128,7 @@ export default function Home() {
       <hr style={{ border: "none", borderTop: "0.5px solid #1f1f23" }} />
 
       {/* Currently exploring */}
-      <section style={{ padding: "2.5rem 0" }}>
+      <section style={{ padding: "1.75rem 0" }}>
         <p
           style={{
             fontFamily: "var(--font-mono-var), monospace",
@@ -211,7 +210,7 @@ export default function Home() {
       <hr style={{ border: "none", borderTop: "0.5px solid #1f1f23" }} />
 
       {/* Recent notes */}
-      <section style={{ padding: "2.5rem 0" }}>
+      <section style={{ padding: "1.75rem 0" }}>
         <p
           style={{
             fontFamily: "var(--font-mono-var), monospace",
