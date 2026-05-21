@@ -1,15 +1,5 @@
 @import "tailwindcss";
 
-@theme {
-  --color-surface: #0a0a0b;
-  --color-card: #111113;
-  --color-border: #1f1f23;
-  --color-accent: #22d3ee;
-  --color-muted: #71717a;
-
-  --font-sans: var(--font-syne), sans-serif;
-  --font-mono: var(--font-mono-var), monospace;
-}
 * {
   box-sizing: border-box;
   margin: 0;
@@ -27,7 +17,6 @@ body {
 }
 
 .prose-note h2 {
-  font-family: var(--font-syne), sans-serif;
   font-size: 1.25rem;
   font-weight: 600;
   color: #fafafa;
@@ -36,7 +25,6 @@ body {
 }
 
 .prose-note h3 {
-  font-family: var(--font-syne), sans-serif;
   font-size: 1rem;
   font-weight: 600;
   color: #e4e4e7;
@@ -45,7 +33,6 @@ body {
 }
 
 .prose-note p {
-  font-family: var(--font-syne), sans-serif;
   font-size: 0.9rem;
   color: #a1a1aa;
   line-height: 1.8;
@@ -53,7 +40,6 @@ body {
 }
 
 .prose-note code {
-  font-family: var(--font-mono-var), monospace;
   font-size: 0.8rem;
   background: #111113;
   color: #22d3ee;
@@ -86,11 +72,9 @@ body {
 }
 
 .prose-note ul li {
-  font-family: var(--font-syne), sans-serif;
   font-size: 0.9rem;
   color: #a1a1aa;
-  padding: 0.2rem 0;
-  padding-left: 1rem;
+  padding: 0.2rem 0 0.2rem 1rem;
   position: relative;
 }
 

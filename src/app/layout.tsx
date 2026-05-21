@@ -17,7 +17,7 @@ const jetbrainsMono = JetBrains_Mono({
 });
 
 export const metadata: Metadata = {
-  title: "Sragvi · cybersecurity",
+  title: "Sragvi · Cybersecurity",
   description: "A public learning journal and portfolio.",
 };
 
@@ -29,11 +29,30 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body
-        className={`${syne.variable} ${jetbrainsMono.variable} flex flex-col min-h-screen`}
+        style={{
+          fontFamily: "var(--font-syne), sans-serif",
+          backgroundColor: "#0a0a0b",
+          color: "#e4e4e7",
+          minHeight: "100vh",
+          display: "flex",
+          flexDirection: "column",
+        }}
+        className={`${syne.variable} ${jetbrainsMono.variable}`}
       >
-        <Nav />
-        <div className="flex-1 max-w-5xl mx-auto w-full">{children}</div>
-        <Footer />
+        <div
+          style={{
+            maxWidth: "1100px",
+            margin: "0 auto",
+            width: "100%",
+            flex: 1,
+            display: "flex",
+            flexDirection: "column",
+          }}
+        >
+          <Nav />
+          <div style={{ flex: 1 }}>{children}</div>
+          <Footer />
+        </div>
       </body>
     </html>
   );
