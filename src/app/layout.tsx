@@ -17,7 +17,7 @@ const jetbrainsMono = JetBrains_Mono({
 });
 
 export const metadata: Metadata = {
-  title: "your name · cybersecurity",
+  title: "Sragvi · cybersecurity",
   description: "A public learning journal and portfolio.",
 };
 
@@ -28,11 +28,11 @@ export default function RootLayout({
 }) {
   return (
     <html lang="en">
-      <body className={`${syne.variable} ${jetbrainsMono.variable}`}>
+      <body
+        className={`${syne.variable} ${jetbrainsMono.variable} flex flex-col min-h-screen`}
+      >
         <Nav />
-        <div className="flex-1">
-          {children}
-        </div>
+        <div className="flex-1 max-w-5xl mx-auto w-full">{children}</div>
         <Footer />
       </body>
     </html>
